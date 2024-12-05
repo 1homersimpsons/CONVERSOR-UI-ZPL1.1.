@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlmaBox - Conversão ZPL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png">
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <!-- Logo alternando entre a imagem sem fundo e o logo completo -->
+        <img id="logo-image" src="img/AlmaBOX-Sem-Fundo.png" alt="AlmaBOX Sem Fundo" style="opacity: 1;">
+        <img id="logo-full" src="img/logo(3).png" alt="AlmaBox - ZPL PRIME" style="opacity: 0;">
+    </div>
+    <nav>
+        <a href="#sobre">SOBRE</a>
+        <a href="#suporte">SUPORTE</a>
+    </nav>
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="img/facebook-icon.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=5511947229941&text=Ol%C3%A1,%20tudo%20bem?%20Peguei%20o%20contato%20de%20voc%C3%AAs%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20ZPL%20Prime" target="_blank" aria-label="WhatsApp">
+            <img src="img/whatsapp-icon.png" alt="WhatsApp" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/almabox.log/profilecard" target="_blank" aria-label="Instagram">
+            <img src="img/instagram-icon.png" alt="Instagram" class="social-icon">
+        </a>
+    </div>
+</header>
+
+<main>
+    <!-- Configurações -->
+    <section class="config-section">
+        <h2>Configurações da Etiqueta</h2>
+        <div class="config-fields">
+            <div>
+                <label for="densidade">Densidade:</label>
+                <input type="text" id="densidade" value="8">
+            </div>
+            <div>
+                <label for="qualidade">Qualidade:</label>
+                <input type="text" id="qualidade" value="300">
+            </div>
+            <div>
+                <label for="tamanho">Tamanho:</label>
+                <input type="text" id="tamanho" value="210 x 297">
+            </div>
+            <div>
+                <label for="rotulos">Rótulos:</label>
+                <input type="text" id="rotulos" value="0" readonly>
+            </div>
+        </div>
+
+        <button id="advancedOptionsBtn" class="main-button">Opções Avançadas</button>
+
+        <div id="advancedOptions" class="advanced-options">
+            <h3>Opções Avançadas</h3>
+            <div>
+                <label for="dimension">Dimensão:</label>
+                <select id="dimension">
+                    <option value="custom">Custom</option>
+                    <option value="a4">A4</option>
+                    <option value="a5">A5</option>
+                </select>
+            </div>
+            <div>
+                <label for="width">Largura (mm):</label>
+                <input type="text" id="width" value="210">
+            </div>
+            <div>
+                <label for="height">Altura (mm):</label>
+                <input type="text" id="height" value="297">
+            </div>
+            <div>
+                <label for="backgroundColor">Cor de Fundo:</label>
+                <input type="color" id="backgroundColor" value="#ffffff">
+            </div>
+        </div>
+    </section>
+
+    <!-- Código ZPL -->
+    <section class="center-section">
+        <label for="codeEditor">Insira ou Cole o Código ZPL:</label>
+        <textarea id="codeEditor" class="fixed-code-area"></textarea>
+
+        <!-- Seleção de Formato -->
+        <label for="fileFormat">Selecione o formato:</label>
+        <select id="fileFormat">
+            <option value="" disabled selected>Selecione...</option>
+            <option value="pdf">PDF</option>
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+        </select>
+
+        <button id="convertBtn" class="main-button">CONVERTER</button>
+
+    </section>
+
+    <!-- Preview -->
+    <section class="preview-section">
+        <h2>Preview</h2>
+        <div id="previewArea" class="preview-box">
+            <p>Aqui será exibido o resultado da conversão.</p>
+        </div>
+
+        <!-- Barra de Progresso -->
+        <div style="width: 100%; border: 1px solid #ccc; position: relative; height: 20px;">
+            <div id="progress-bar" style="background: #4caf50; height: 100%; width: 0%;"></div>
+            <span id="progress-text" style="position: absolute; left: 50%; top: 0; transform: translateX(-50%); color: black;">
+                Progresso: 0.00%
+            </span>
+        </div>
+
+        <!-- Botões de Ação -->
+        <button id="printBtn" class="main-button" disabled>IMPRIMIR</button>
+        <button id="downloadBtn" class="main-button" disabled>BAIXAR</button>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 AlmaBox. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
+
+<script type="module" src="js/index.js"></script>
+</body>
+</html>

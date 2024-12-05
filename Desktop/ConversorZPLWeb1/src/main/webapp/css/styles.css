@@ -1,0 +1,342 @@
+/* Geral */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o conteúdo ocupe 100% da altura da tela */
+    box-sizing: border-box;
+}
+
+/* Define o espaçamento adicional */
+main {
+    padding-top: 20px; /* Espaço entre o conteúdo e o cabeçalho */
+}
+
+/* Cabeçalho */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%; /* Largura total */
+    max-width: 1200px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza o cabeçalho */
+    background: linear-gradient(90deg, #4a4a4a, #333);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+    padding: 10px 20px; /* Espaçamento interno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.logo-container img {
+    height: 50px; /* Altura fixa do logo */
+    max-height: 70px; /* Limite máximo para telas maiores */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+/* Navegação */
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #f1c40f; /* Cor dourada no hover */
+}
+
+/* Ícones de Redes Sociais */
+.social-icons {
+    display: flex;
+    gap: 15px; /* Espaçamento entre os ícones */
+    align-items: center;
+}
+
+.social-icons img {
+    width: 24px; /* Tamanho padrão dos ícones */
+    height: 24px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Leve aumento ao passar o mouse */
+    opacity: 0.8; /* Reduz ligeiramente a opacidade */
+}
+
+/* Responsividade */
+@media screen and (max-width: 1024px) {
+    header {
+        flex-wrap: wrap; /* Quebra os itens em linhas */
+        padding: 10px;
+    }
+
+    .logo-container img {
+        height: 40px; /* Reduz o tamanho do logo */
+    }
+
+    header nav {
+        justify-content: center; /* Centraliza o menu */
+    }
+
+    .social-icons {
+        justify-content: center; /* Centraliza os ícones */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column; /* Alinha os itens verticalmente */
+        align-items: center;
+    }
+
+    .logo-container img {
+        height: 35px; /* Ajusta o tamanho para telas menores */
+    }
+
+    header nav {
+        flex-wrap: wrap; /* Quebra os links em duas linhas se necessário */
+    }
+
+    .social-icons {
+        margin-top: 10px; /* Espaço extra abaixo do menu */
+    }
+}
+
+/* Layout Principal */
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas */
+    gap: 20px; /* Espaçamento entre as colunas */
+    padding: 20px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Configurações da Etiqueta */
+.config-section {
+    background-color: #fff;
+    padding: 15px; /* Reduz o padding interno */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduz o espaçamento entre elementos */
+    justify-content: space-between;
+    transition: height 0.3s ease-out; /* Suavidade na expansão */
+}
+/* Área de Opções Avançadas */
+.advanced-options {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.advanced-options.open {
+    display: block;
+    max-height: 300px; /* Altura máxima ao expandir */
+    opacity: 1;
+    padding: 15px; /* Adiciona espaçamento interno */
+}
+
+.advanced-options label,
+.advanced-options input,
+.advanced-options select {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    width: 100%; /* Ajusta o tamanho dos campos */
+}
+
+/* Botão para abrir as opções avançadas */
+.config-section button {
+    align-self: center; /* Centraliza o botão */
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.config-section button:hover {
+    background-color: #357abd;
+    transform: scale(1.02);
+}
+
+/* Preview da Etiqueta */
+.preview-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 100%; /* Ocupa a altura total da seção */
+}
+
+/* Caixa do preview */
+.preview-box {
+    width: 100%;
+    height: 300px; /* Altura fixa */
+    border: 1px dashed #ccc;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botões de Ação no Preview */
+.preview-section button {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.preview-section button:hover {
+    background-color: #357abd;
+    transform: scale(1.02);
+}
+
+.preview-section button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Editor de Código ZPL */
+.center-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.center-section textarea {
+    width: 100%; /* Largura total dentro da seção */
+    max-width: 500px; /* Define uma largura fixa */
+    height: 300px; /* Define uma altura fixa */
+    resize: none; /* Impede o redimensionamento manual */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+button {
+    background-color: #4a90e2; /* Azul padrão */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', sans-serif; /* Fonte uniforme */
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #357abd; /* Azul mais escuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra no hover */
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Rodapé */
+footer {
+    background-color: #4a4a4a;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+/* Estilo para a barra de progresso */
+#progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0; /* Cor de fundo da barra */
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%; /* Inicialmente 0% de progresso */
+    background-color: #4caf50; /* Cor verde da barra de progresso */
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out; /* Suaviza a animação de progresso */
+}
+
+#progress-text {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+
